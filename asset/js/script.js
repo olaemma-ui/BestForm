@@ -37,13 +37,18 @@ if(OPTIONS && SELECT && SELECT_INPUT){
     SELECT.forEach((e, i) => {
         state[i] = false;
         e.addEventListener('click', () => {
-            e.style.cssText = (!state[i]) 
-                                ? `border-bottom-left-radius: 0; border-bottom-right-radius: 0;` 
-                                : `border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;`;
             state[i] = !state[i];
+            e.style.cssText = (state[i]) 
+            ? `border-bottom-left-radius: 0; border-bottom-right-radius: 0;` 
+            : `border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;`;
+        
             (state[i]) ? SELECT_INPUT[i].focus() : SELECT_INPUT[i].blur();
             console.log(state);
         });
+
+        e.addEventListener('mousedown', () => {
+            console.log('state = ',state);
+        })
         
         SELECT_INPUT[i].addEventListener('focus', ()=>{
 

@@ -38,28 +38,44 @@ input.custom:focus{
     box-shadow: 0px 5.87805px 29.3902px rgba(0, 0, 0, 0.08);
     color: var(--bs-dark);
 }
-button.btn-custom-black{
+.btn-custom-black{
     background-color: #1E2024;
     border-radius: 14px;
     height: 60px;
     color: white;
 }
-button.custom-icon-btn{
+.custom-btn{
+    min-width: 3em;
+    height: 3em;
+    border-radius: .6em;
+    display: grid;
+    place-content: center;
+}
+
+.custom-icon-btn{
     border-radius: 10px;
     width: 2.5em;
     height: 2.5em;
 }
-button.btn-purple{
+.btn-purple{
     background-color: #7D7AFF;
     border: none;
 }
-button.btn-custom{
+.btn-custom{
     background-color: #7D7AFF;
     border-radius: 10px;
     height: 60px;
     color: white;
 }
-button.btn-custom-2{
+.btn-sm{
+    height: 3em;
+    min-width: 12em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.btn-custom-2{
     background-color: #7D7AFF;
     border-radius: 8px;
     color: white;    
@@ -78,7 +94,7 @@ button.btn-custom-2{
     border-radius: 20px;
 }
 
-button.btn-custom:hover{
+.btn-custom:hover{
     color: white !important;
 }
 form.custom-form{
@@ -188,6 +204,12 @@ ul.tab-group{
     min-width: 10em;
     width: 100%;
 }
+
+.rounded-avatar{
+    border-radius: 1.4em;
+    width: 5em;
+    height: 5em;
+}
 .profile-details{
     display: flex;
     align-items: center;
@@ -202,6 +224,27 @@ ul.tab-group{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.address-card{
+    width: 100%;
+    min-height: 15em;
+    background-color: white;
+    border-radius: 25px;
+    /* max-width: 42em; */
+    box-shadow: 11.8119px 23.6238px 47.2477px rgba(30, 32, 36, 0.1);
+    /* display: flex;
+    justify-content: space-between; */
+
+    padding: 2.5em;
+    font-size: .8em;
+}
+.address-card-data{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    gap: 20px;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .select{
@@ -277,5 +320,9 @@ ul.tab-group{
     ul.tab-navs > li{
         min-width: 4em;
         font-size: 0.8em;
+    }
+    .address-card{
+        padding: 1em;
+        padding-top: 2em !important;
     }
 }
