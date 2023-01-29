@@ -28,13 +28,21 @@ if(TABS){
 }
 
 
-const OPTIONS = document.querySelectorAll('.SELECT .SELECT-OPTIONS');
-const SELECT = document.querySelectorAll('.SELECT');
-const SELECT_INPUT = document.querySelectorAll('.SELECT > input');
+const OPTIONS = document.querySelectorAll('.select .select-options');
+const SELECT = document.querySelectorAll('.select');
+const SELECT_INPUT = document.querySelectorAll('.select > input');
 
 if(OPTIONS && SELECT && SELECT_INPUT){
+    var visible = false;
     SELECT.forEach((e, i) => {
-        e.addEventListener('click', () => SELECT_INPUT[i].focus());
+        e.addEventListener('click', () => {
+            e.style.cssTex = `
+                border-bottom-left-radius: 8px !important;
+                border-bottom-right-radius: 8px !important;
+            `;
+            
+            SELECT_INPUT[i].focus();
+        });
         SELECT_INPUT[i].addEventListener('focus', ()=>{
 
             OPTIONS.forEach((elem) => {
@@ -45,7 +53,7 @@ if(OPTIONS && SELECT && SELECT_INPUT){
                         e.children[0].attributes.id.value = element.attributes.value.value;
                     });
                 });
-                OPTIONS[i].style.visibility = 'visible';
+                OPTIONS[i].style.visibility = (document.activeElement === SELECT_INPUT[i]);
             });
 
         });

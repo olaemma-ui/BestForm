@@ -198,6 +198,54 @@ ul.tab-group{
 .profile-details .profile-footer{
     display: flex;
 }
+
+.select{
+    cursor: pointer;
+    position: relative;
+    background-color: var(--dark);
+    margin-top: 10px;
+    display: flex;
+    border-radius: 8px;
+    /* height: ; */
+}
+.select input{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    color: white;
+}
+.select-options{
+    overflow-y: auto;
+    position: absolute;
+    /* max-height: 200px; */
+    width: 100%;
+    top: 40px;
+    visibility: hidden;
+    background-color: var(--white);
+    border: solid 2px var(--dash-blue);
+    /* z-index: 2; */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.04), 0px 8px 16px rgba(0, 0, 0, 0.08);
+}
+.select > input:focus{
+    outline: none !important;
+}
+.select-option{
+    border-bottom: solid 2px var(--dash-blue);
+    padding: 10px;
+    color: var(--bs-light);
+    background-color: var(--white);
+}
+.select-option:hover{
+    background-color: var(--bs-light);
+    color: #1E2024;
+}
+
+
 @media screen and (max-width: 768px) {
     .md-invisible{
         visibility: hidden;
