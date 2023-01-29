@@ -244,6 +244,18 @@ ul.tab-group{
     background-color: var(--bs-light);
     color: #1E2024;
 }
+.logo{
+    width: 8em;
+    height: 3em;
+}
+.details{
+    min-height: 200px;
+    max-height: 500px;
+    width: 100%;
+    padding: 1em;
+    border-radius: 14px;
+    background-color: var(--bs-light);
+}
 
 
 @media screen and (max-width: 768px) {
