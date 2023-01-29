@@ -33,31 +33,36 @@ const SELECT = document.querySelectorAll('.select');
 const SELECT_INPUT = document.querySelectorAll('.select > input');
 
 if(OPTIONS && SELECT && SELECT_INPUT){
-    var visible = false;
+    var state = [];
     SELECT.forEach((e, i) => {
+        state[i] = false;
         e.addEventListener('click', () => {
-            e.style.cssTex = `
-                border-bottom-left-radius: 8px !important;
-                border-bottom-right-radius: 8px !important;
-            `;
-            
-            SELECT_INPUT[i].focus();
+            e.style.cssText = (!state[i]) 
+                                ? `border-bottom-left-radius: 0; border-bottom-right-radius: 0;` 
+                                : `border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;`;
+            state[i] = !state[i];
+            (state[i]) ? SELECT_INPUT[i].focus() : SELECT_INPUT[i].blur();
+            console.log(state);
         });
+        
         SELECT_INPUT[i].addEventListener('focus', ()=>{
 
             OPTIONS.forEach((elem) => {
-                elem.style.visibility = 'hidden';
                 Array.from(OPTIONS[i].children).forEach(element => {
                     element.addEventListener('mousedown', ()=>{
                         e.children[0].value = element.innerText;
                         e.children[0].attributes.id.value = element.attributes.value.value;
                     });
                 });
-                OPTIONS[i].style.visibility = (document.activeElement === SELECT_INPUT[i]);
+                OPTIONS[i].style.display =  'block';
             });
 
         });
 
-        SELECT_INPUT[i].addEventListener('blur', ()=> OPTIONS[i].style.visibility = 'hidden');
+        SELECT_INPUT[i].addEventListener('blur', ()=> {
+            e.style.cssText = `border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;`;
+            OPTIONS[i].style.display = 'none';
+            state[i] = false;
+        });
     });
 }
