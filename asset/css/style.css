@@ -141,6 +141,7 @@ a.custom-page-link{
 .sign-board{
     min-height: 20em;
     height: 30em;
+    width: 100%;
     background-color: #FFFFFF;
     border-radius: 20px;
 }
@@ -379,4 +380,50 @@ input.select-option-value:focus{
 }
 .border-none{
     border: none !important;
+}
+
+
+/* ============= CANVA ==================== */
+
+canvas {
+    width: 100%;
+    height: 100%;
+    min-height: 25em;
+    
+    /* border: 1px #5fca83 dashed; */
+    border-radius: 7px;
+}
+
+.signature-pad-container {
+    width: 100%;
+    height: 10em;
+    /* max-height: 30em;
+    min-width: 40em;
+    min-height: 25em; */
+    padding: 2em;
+    
+    position: relative;
+    
+    background-color: white;
+    box-shadow: 0 0 20px 1px #ddd;
+    
+    text-align: right;
+}
+
+#clear_button {
+    z-index: 10;
+    position: absolute;
+    right: 2em;
+    top: 90%;
+    /* padding: 1.5em 2em; */
+    
+    color: #7D7AFF;
+    font-weight: 600;
+    font-size: 14pt;
+    cursor: pointer;
+}
+
+#finish_button {
+    margin-top: 2em;
+    cursor: pointer;
 }

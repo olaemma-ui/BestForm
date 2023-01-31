@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+  height: 100vh;
+}
+
+canvas {  
+  background-color: #fff;
+  border-radius: 15px;
+  border: 5px solid black; 
+}
+
+#canvas-wrap {
+  position: relative;
+ 
+}
+
+ #download, #clear {
+        position: relative;
+        top: 0;
+        left: 170px;
+        padding: 10px;
+        background-color: #57c4e5;
+        border: 3px solid black;
+        color: black;
+        display: block-inline;
+        margin-top: 5px;
+        margin-right:5px;
+        transition: .3s;
+      }
+
+#download:hover, #clear:hover {
+  background-color: transparent;
+}
+
+#text {
+  position:relative;
+  font-weight: bold;
+  left: 190px;
+}
+</style>
+<body>
+
+    <div id="canvas-wrap">
+        <canvas></canvas>   
+        <div id="buttons">
+               <div id="text">Please sign above</div>
+               <input type="button" id="download" value="Save as PNG"/>
+              <input type="button" id="clear" value="Clear">
+            </div>
+        </div>
+    
+</body>
+
+<script>
+    var canvas = document.querySelector('canvas');
+  canvas.style.position = 'relative';
+  canvas.style.top = "0";
+  canvas.style.left = "0";
+
+var ctx = canvas.getContext('2d');
+canvas.width = 500;
+canvas.height = 350;
+
+ctx.lineWidth = 3;
+ctx.lineJoin = ctx.lineCap = 'round';
+
+var isDrawing, drawLine;
+
+canvas.onmousedown = function(event) {
+  isDrawing = true;
+  drawLine = { x: event.clientX, y: event.clientY };
+};
+
+canvas.onmousemove = function(event) {
+  if (!isDrawing) return;
+
+  ctx.beginPath();
+  
+  ctx.moveTo(drawLine.x, drawLine.y);
+  ctx.lineTo(event.clientX, event.clientY);
+  ctx.stroke();
+     
+  drawLine = { x: event.clientX, y: event.clientY };
+};
+
+canvas.onmouseup = function() {
+  isDrawing = false;
+};
+
+document.getElementById('clear').addEventListener('click', function() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }, false);
+
+window.onload = function(){
+var save = document.getElementById('download');
+
+ save.onclick = function(){
+    download(canvas, 'signature.png');
+  }
+
+}
+
+function download(canvas, filename) {
+  var lnk = document.createElement('a'), e;
+  lnk.download = filename;
+  lnk.href = canvas.toDataURL("image/png;base64");
+  
+  if (document.createEvent) {
+    e = document.createEvent("MouseEvents");
+    e.initMouseEvent("click", true, true, window,
+                     0, 0, 0, 0, 0, false, false, false,
+                     false, 0, null);
+
+    lnk.dispatchEvent(e);
+  } else if (lnk.fireEvent) {
+    lnk.fireEvent("onclick");
+  }
+}
+</script>
+</html>

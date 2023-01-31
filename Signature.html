@@ -12,33 +12,39 @@
 </head>
 <body>
 
-    <div class="container pb-5 ">
-
-        <div class="mt-5 place-center">
-            
+    <div class="container mt-4 mt-md-0 ">
+        <div class="place-center hv-100">
             <div class="place-center">
-                <h4>Sign</h4>
-                <small>
-                    A town hall different from bala blu, blue blu bulaba. 
-                    broom broom broom brooooooooom. 
-                    Bala blu blue blu bulaba.
-                </small>
-            </div>
-
-            <form action="" class="custom-form mt-4">
-                <div class="sign-board">
-
+                <div class="place-center">
+                    <h4>Sign</h4>
+                    <small>
+                        A town hall different from bala blu, blue blu bulaba. 
+                        broom broom broom brooooooooom. 
+                        Bala blu blue blu bulaba.
+                    </small>
                 </div>
-
-                <button class="btn btn-custom-black w-94 m-4">
-                    Accept sign and register
-                </button>
-            </form>
     
+                <form action="" class="custom-form mt-4">
+                    <div class="sign-board w-10">
+                        <div class="signature-pad-container w-100 h-100 sign-board">
+                            <a class="button-text" id="clear_button">CLEAR</a>
+                            <canvas id="signature_pad"></canvas>
+                        </div>
+                        
+                        <input type="text" id="base64-string" hidden>
+                    </div>
+    
+                    <button id="finish_button" class="btn btn-custom-black w-94 m-4">
+                        Accept sign and register
+                    </button>
+                </form>
+            </div>
         </div>
-
     </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="./asset/js/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js" integrity="sha256-W+ivNvVjmQX6FTlF0S+SCDMjAuTVNKzH16+kQvRWcTg=" crossorigin="anonymous"></script>
+<script src="./asset/js/bootstrap.min.js"></script>
+<script src="./asset/js/popper.min.js"></script>
+<script src="./asset/js/script.js"></script>
 </html>

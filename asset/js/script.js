@@ -111,3 +111,163 @@ if(SELECT_OPTION && SELECT && SELECT_OPTIONS && SELECT_OPTIONS_OPTION){
         })
     });
 }
+
+
+
+
+
+
+
+
+
+// ================================ Signature pad ============================
+
+// var canvas = document.querySelector('canvas');
+//   if(canvas){
+//     canvas.style.position = 'relative';
+//     canvas.style.top = "0";
+//     canvas.style.left = "0";
+//     canvas.style.color = 'green';
+
+//     var ctx = canvas.getContext('2d');
+//     // canvas.width = 600;
+//     // canvas.height = 350;
+
+//     function resizeCanvas() {
+
+//         var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+   
+//         canvas.width = canvas.offsetWidth * ratio;
+//         canvas.height = canvas.offsetHeight * ratio;
+//         canvas.getContext("2d").scale(ratio, ratio);
+//    }
+   
+//     window.onresize = resizeCanvas;
+//     resizeCanvas();
+
+
+//     ctx.lineWidth = 2;
+//     ctx.lineJoin = ctx.lineCap = 'round';
+
+//     var isDrawing, drawLine;
+
+//     canvas.onmousedown = function(event) {
+//         isDrawing = true;
+//         drawLine = { x: event.clientX, y: event.clientY };
+
+//         console.log(drawLine);
+//     };
+
+//     canvas.onmousemove = function(event) {
+//         if (!isDrawing) return;
+
+//     //   alert('ola');
+
+//         ctx.beginPath();
+        
+//         ctx.moveTo(drawLine.x, drawLine.y);
+//         ctx.lineTo(event.clientX, event.clientY);
+        
+//         ctx.stroke();
+//         drawLine = { x: event.clientX, y: event.clientY };
+//     };
+
+//     canvas.onmouseup = function() {
+//         isDrawing = false;
+//     };
+
+//     document.getElementById('clear').addEventListener('click', function() {
+//             ctx.clearRect(0, 0, canvas.width, canvas.height);
+//         }, false);
+
+//     window.onload = function(){
+//     var save = document.getElementById('download');
+
+//         save.onclick = function(){
+//             download(canvas, 'signature.png');
+//         }
+
+//     }
+
+//     function download(canvas, filename) {
+//     var lnk = document.createElement('a'), e;
+//     lnk.download = filename;
+//     lnk.href = canvas.toDataURL("image/png;base64");
+    
+//     if (document.createEvent) {
+//         e = document.createEvent("MouseEvents");
+//         e.initMouseEvent("click", true, true, window,
+//                         0, 0, 0, 0, 0, false, false, false,
+//                         false, 0, null);
+
+//         lnk.dispatchEvent(e);
+//     } else if (lnk.fireEvent) {
+//         lnk.fireEvent("onclick");
+//     }
+//     }
+//   }
+
+// document.querySelectorAll('input#address').forEach((e, i) => {
+//     e.addEventListener('keyup', (event)=>{
+        
+       
+    
+//     })
+// });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var canvas = document.querySelector("#signature_pad");
+    var signaturePad = new SignaturePad(canvas, {
+        minWidth: 1,
+        maxWidth: 2,
+    });
+
+    function resizeCanvas() {
+        var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+        let storedData = signaturePad.toData();
+        signaturePad.clear(); // otherwise isEmpty() might return incorrect value
+        signaturePad.fromData(storedData);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    
+    var clearButton = document.querySelector("#clear_button");
+    clearButton.addEventListener("click", function() {
+        signaturePad.clear();
+    });
+    
+    var finishButton = document.querySelector("#finish_button");
+    finishButton.addEventListener("click", function(e) {
+        e.preventDefault();
+        const svgDataUrl = signaturePad.toDataURL("image/svg+xml");
+        document.querySelector('#base64-string').value = svgDataUrl;
+    });
+});
+
+function fetchAddress(params) {
+    google.maps.event.addDomListener(window, 'load', initialize);
+    function initialize() {
+        var input = document.getElementById('autocomplete_search');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        var input2 = document.getElementById('autocomplete_search2');
+        var autocomplete2 = new google.maps.places.Autocomplete(input2);
+
+        autocomplete.addListener('place_changed', function () {
+            
+            var place = autocomplete.getPlace();
+                
+            var from_address = place.formatted_address;
+            document.getElementById("latitude").value = place.geometry['location'].lat();
+            document.getElementById("longitude").value = place.geometry['location'].lng();					
+            $('#address').val(from_address);
+        
+        });
+   
+    }
+}
