@@ -14,60 +14,96 @@ if(TABS){
         tabs.push(elemDt)
         elem.addEventListener("click", function(){
             if(!elem.classList.contains("tab-active")){
-                if(activeTab)
-                    activeTab.classList.remove("tab-active");
+                if(activeTab) activeTab.classList.remove("tab-active");
+                
                 elem.classList.add("tab-active");
                 activeTab = elem
-                if(activeTabItem)
-                    activeTabItem.classList.remove("tab-active");
-                activeTabItem = document.querySELECTor(".tab .tab-group .tab-item"+elem.dataset.tab);
+                if(activeTabItem) activeTabItem.classList.remove("tab-active");
+                
+                activeTabItem = document.querySelector(".tab .tab-group .tab-item"+elem.dataset.tab);
                 activeTabItem.classList.add("tab-active");
+
+                console.log(activeTabItem);
             }
         })
     })
 }
 
 
-const OPTIONS = document.querySelectorAll('.select .select-options');
-const SELECT = document.querySelectorAll('.select');
-const SELECT_INPUT = document.querySelectorAll('.select > input');
 
-if(OPTIONS && SELECT && SELECT_INPUT){
-    var state = [];
-    SELECT.forEach((e, i) => {
-        state[i] = false;
-        e.addEventListener('click', () => {
-            state[i] = !state[i];
-            e.style.cssText = (state[i]) 
-            ? `border-bottom-left-radius: 0; border-bottom-right-radius: 0;` 
-            : `border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;`;
-        
-            (state[i]) ? SELECT_INPUT[i].focus() : SELECT_INPUT[i].blur();
-            console.log(state);
-        });
+const ACCEPT_LABEL = document.querySelectorAll('label.accept');
+const ACCEPT_CHECKBOX = document.querySelectorAll('label.accept > input[type=checkbox]');
 
-        e.addEventListener('mousedown', () => {
-            console.log('state = ',state);
+const OPTION_LABEL = document.querySelectorAll('.custom-option-label');
+const OPTION_CHECKBOX = document.querySelectorAll('.custom-option-label > input[type=checkbox]');
+
+if (ACCEPT_CHECKBOX && ACCEPT_LABEL && OPTION_LABEL) {
+    ACCEPT_LABEL.forEach((e, i) => {
+        e.addEventListener('click', ()=>{
+            if(ACCEPT_CHECKBOX[i].checked){
+                ACCEPT_LABEL[i].classList.add('btn-purple');
+                ACCEPT_LABEL[i].classList.add('text-light');
+                OPTION_LABEL[i].classList.add('active');
+                OPTION_CHECKBOX[i].checked = true;
+            }else{
+                ACCEPT_LABEL[i].classList.remove('btn-purple')
+                OPTION_LABEL[i].classList.remove('active');
+                ACCEPT_LABEL[i].classList.remove('text-light');
+                OPTION_CHECKBOX[i].checked = false;
+            }
         })
-        
-        SELECT_INPUT[i].addEventListener('focus', ()=>{
+    });
+}
 
-            OPTIONS.forEach((elem) => {
-                Array.from(OPTIONS[i].children).forEach(element => {
-                    element.addEventListener('mousedown', ()=>{
-                        e.children[0].value = element.innerText;
-                        e.children[0].attributes.id.value = element.attributes.value.value;
-                    });
-                });
-                OPTIONS[i].style.display =  'block';
+
+const SELECT_OPTION = document.querySelectorAll('.select-option');
+const SELECT = document.querySelectorAll('.select-option > .select');
+const SELECT_OPTION_VALUE = document.querySelectorAll('.select-option > .select input.select-option-value');
+const SELECT_OPTIONS = document.querySelectorAll('.select-option > .options');
+const SELECT_OPTIONS_OPTION = document.querySelectorAll('.select-option > .options > .option');
+
+if(SELECT_OPTION && SELECT && SELECT_OPTIONS && SELECT_OPTIONS_OPTION){
+    var selectVisible = [];
+    var select = function () {
+        SELECT_OPTION.forEach((e, i) => {
+            selectVisible[i] = false;
+            e.addEventListener('click', (event)=>{
+                selectVisible[i] = !selectVisible[i];
+                console.log(selectVisible);
+                // (selectVisible[i]) 
+                //     ? SELECT_OPTION_VALUE[i].focus() 
+                //     : SELECT_OPTION_VALUE[i].blur();
+                
+                    if(selectVisible[i]){
+                        SELECT_OPTION_VALUE[i].focus();
+                        SELECT_OPTIONS[i].style.display = 'block';
+                    }else{
+                        SELECT_OPTION_VALUE[i].blur();
+                        SELECT_OPTIONS[i].style.display = 'none';
+                    }
+           
+            })
+        });
+    }
+
+    SELECT_OPTION_VALUE.forEach((e, i) => {
+        e.addEventListener('focus', ()=>{
+            SELECT_OPTIONS[i].style.display = 'block';
+            selectVisible[i] = true;
+            SELECT_OPTIONS_OPTION.forEach(elem => {
+                elem.addEventListener('mousedown', ()=>{
+                    e.value = elem.innerText;
+                    e.id = elem.id;
+                })    
             });
+        })
+    });
 
-        });
-
-        SELECT_INPUT[i].addEventListener('blur', ()=> {
-            e.style.cssText = `border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;`;
-            OPTIONS[i].style.display = 'none';
-            state[i] = false;
-        });
+    SELECT_OPTION_VALUE.forEach((e, i) => {
+        e.addEventListener('blur', ()=>{
+            selectVisible[i] = false;
+            // select();
+            SELECT_OPTIONS[i].style.display = 'none';
+        })
     });
 }

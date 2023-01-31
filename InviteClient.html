@@ -18,7 +18,7 @@
         <section class="mt-5 pb-5">
             
             <div class="place-center">
-                <h1 class="text-center">Invite your client ( localy )</h1>
+                <h1 class="text-center">Invite your client ( locally )</h1>
 
                 <div class="custom-avatar-lg">
                     <img src="./asset/img/avatar.jpg" alt="">
@@ -52,23 +52,23 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label for="news" class="custom-radio-label mt-4">
+                        <label for="news" class="custom-option-label mt-4" data-toggle="modal" data-target="#news">
                             Newsletter
-                            <input type="radio" id="news" class="">
+                            <input type="checkbox" class="">
                         </label>
                     </div>
 
                     <div class="col-md-4">
-                        <label for="news" class="custom-radio-label mt-4">
-                            Newsletter
-                            <input type="radio" id="news" class="">
+                        <label for="tc" class="custom-option-label  mt-4" data-toggle="modal" data-target="#tc">
+                            Terms and Condition
+                            <input type="checkbox" class="">
                         </label>
                     </div>
 
                     <div class="col-md-4">
-                        <label for="news" class="custom-radio-label mt-4">
-                            Newsletter
-                            <input type="radio" id="news" class="">
+                        <label for="pp" class="custom-option-label mt-4" data-toggle="modal" data-target="#pp">
+                            Privacy Policy
+                            <input type="checkbox" class="">
                         </label>
                     </div>
 
@@ -84,7 +84,142 @@
         </div>
 
     </section>
+
+
+    
+    <!-- Trigger the modal with a button -->
+    <!-- Modal -->
+    <div id="news" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content modal-w-sm">
+                <!-- <div class="modal-header">
+                    <button type="button" class="btn close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div> -->
+                <div class="modal-body">
+                    <div class="container mt-3">
+                        <h5 class="text-center font-bold">Newsletter</h5>
+                        <hr class="mt-3 mb-3 border-dark">
+                        <div class="content">
+
+                            <p class="text-content overflow-auto">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                            </p>
+
+                            <label for="neweletter" class="btn accept w-100 border">
+                                Accept
+                                <input type="checkbox" class="mt-1 invisible" name="" id="neweletter"/>
+                            </label>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Trigger the modal with a button -->
+    <!-- Modal -->
+    <div id="tc" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content modal-w-sm">
+                <!-- <div class="modal-header">
+                    <button type="button" class="btn close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div> -->
+                <div class="modal-body">
+                    <div class="container mt-3">
+                        <h5 class="text-center font-bold">Terms and Condition</h5>
+                        <hr class="mt-3 mb-3 border-dark">
+                        <div class="content">
+                            <p class="text-content overflow-auto">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                            </p>
+                            <label for="t_c" class="btn accept w-100 border">
+                                Accept
+                                <input type="checkbox" class="mt-1 invisible" name="" id="t_c"/>
+                            </label>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+     <!-- Trigger the modal with a button -->
+    <!-- Modal -->
+    <div id="pp" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content modal-w-sm">
+                <!-- <div class="modal-header">
+                    <button type="button" class="btn close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div> -->
+                <div class="modal-body">
+                    <div class="container mt-3">
+                        <h5 class="text-center font-bold">Privacy Policy</h5>
+                        <hr class="mt-3 mb-3 border-dark">
+                        <div class="content">
+                            <p class="text-content overflow-auto">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Odit at ea facere veniam optio minima a similique vero, earum cumque atque natus quia, 
+                                exercitationem ratione. Ad iste quis cupiditate dolor.
+                            </p>
+                            <label for="p_p" class="mt- btn border accept w-100">
+                                Accept
+                                <input type="checkbox" class="mt-1 invisible" name="" id="p_p"/>
+                            </label>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="./asset/js/script.js"></script>
+<script src="./asset/js/jquery-3.4.1.slim.min.js"></script>
+<script src="./asset/js/bootstrap.min.js"></script>
+<script src="./asset/js/popper.min.js"></script>
 </html>
