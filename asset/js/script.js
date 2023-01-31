@@ -56,7 +56,7 @@ if (ACCEPT_CHECKBOX && ACCEPT_LABEL && OPTION_LABEL) {
 }
 
 
-const SELECT_OPTION = document.querySelectorAll('.select-option');
+const SELECT_OPTION = document.querySelectorAll('.select-option > .select > .dropdown-icon');
 const SELECT = document.querySelectorAll('.select-option > .select');
 const SELECT_OPTION_VALUE = document.querySelectorAll('.select-option > .select input.select-option-value');
 const SELECT_OPTIONS = document.querySelectorAll('.select-option > .options');
@@ -64,45 +64,49 @@ const SELECT_OPTIONS_OPTION = document.querySelectorAll('.select-option > .optio
 
 if(SELECT_OPTION && SELECT && SELECT_OPTIONS && SELECT_OPTIONS_OPTION){
     var selectVisible = [];
-    var select = function () {
-        SELECT_OPTION.forEach((e, i) => {
-            selectVisible[i] = false;
-            e.addEventListener('click', (event)=>{
-                selectVisible[i] = !selectVisible[i];
-                console.log(selectVisible);
-                // (selectVisible[i]) 
-                //     ? SELECT_OPTION_VALUE[i].focus() 
-                //     : SELECT_OPTION_VALUE[i].blur();
-                
-                    if(selectVisible[i]){
-                        SELECT_OPTION_VALUE[i].focus();
-                        SELECT_OPTIONS[i].style.display = 'block';
-                    }else{
-                        SELECT_OPTION_VALUE[i].blur();
-                        SELECT_OPTIONS[i].style.display = 'none';
-                    }
-           
-            })
-        });
-    }
+    SELECT_OPTION.forEach((e, i) => {
+        selectVisible[i] = false;
+        e.addEventListener('click', (event)=>{
+            selectVisible[i] = !selectVisible[i];
+            console.log(selectVisible);
+            console.log(e);
+            // (selectVisible[i]) 
+            //     ? SELECT_OPTION_VALUE[i].focus() 
+            //     : SELECT_OPTION_VALUE[i].blur();
+            
+                if(selectVisible[i]){
+                    // SELECT_OPTION_VALUE[i].focus();
+                    SELECT_OPTIONS[i].style.display = 'block';
+                }else{
+                    SELECT_OPTION_VALUE[i].blur();
+                    SELECT_OPTIONS[i].style.display = 'none';
+                }
+       
+                // SELECT_OPTIONS_OPTION.forEach(elem => {
+                //     elem.addEventListener('mousedown', ()=>{
+                //         e.value = elem.innerText;
+                //         e.id = elem.id;
+                //     })    
+                // });
+        })
+    });
 
     SELECT_OPTION_VALUE.forEach((e, i) => {
         e.addEventListener('focus', ()=>{
             SELECT_OPTIONS[i].style.display = 'block';
             selectVisible[i] = true;
-            SELECT_OPTIONS_OPTION.forEach(elem => {
-                elem.addEventListener('mousedown', ()=>{
-                    e.value = elem.innerText;
-                    e.id = elem.id;
-                })    
-            });
+            // SELECT_OPTIONS_OPTION.forEach(elem => {
+            //     elem.addEventListener('mousedown', ()=>{
+            //         e.value = elem.innerText;
+            //         e.id = elem.id;
+            //     })    
+            // });
         })
     });
 
     SELECT_OPTION_VALUE.forEach((e, i) => {
         e.addEventListener('blur', ()=>{
             selectVisible[i] = false;
-            // select();
             SELECT_OPTIONS[i].style.display = 'none';
         })
     });

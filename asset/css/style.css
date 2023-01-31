@@ -21,7 +21,7 @@ body{
 }
 .custom{
     background: #FFFFFF;
-    border-radius: 14px;
+    border-radius: 14px !important;
     height: 4em !important;
     /* max-height: 60px; */
     border: none;
@@ -376,4 +376,7 @@ input.select-option-value{
 
 input.select-option-value:focus{
     outline: none;
+}
+.border-none{
+    border: none !important;
 }
