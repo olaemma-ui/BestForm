@@ -28,6 +28,17 @@ body{
     padding-left: 12px;
     width: 100% !important;
 }
+.custom-link{
+    box-shadow: 0px 5.87805px 29.3902px rgba(0, 0, 0, 0.08);   
+    text-align: center;
+    padding-top: 1.2em;
+}
+.content{
+    padding: 1em;
+}
+.nav-link.custom-link{
+    margin-top: 10px;
+}
 input[type=date].custom, 
 input.custom::placeholder{
     padding-left: 10px;
@@ -137,13 +148,6 @@ a.custom-page-link{
     display: flex;
     align-items: center;
     padding-left: 30px;
-}
-.sign-board{
-    min-height: 20em;
-    height: 30em;
-    width: 100%;
-    background-color: #FFFFFF;
-    border-radius: 20px;
 }
 label.custom-option-label{
     /* border: 2.93902px solid #7D7AFF;
@@ -427,3 +431,32 @@ canvas {
     margin-top: 2em;
     cursor: pointer;
 }
+.sign-board{
+    min-height: 20em;
+    height: 30em;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+}
+
+
+/* Side bar */
+.side-bar{
+    width: 20em;
+    padding: 8px;
+    background-color: white;
+    height: 100vh;
+}
+
+.custom-link{
+    box-shadow: 0px 5.87805px 29.3902px rgba(0, 0, 0, 0.08);   
+    text-align: center;
+    padding-top: 1.2em;
+}
+.content{
+    padding: 1em;
+}
+.nav-link.custom-link{
+    margin-top: 10px;
+}
+/* .side-bar  */
